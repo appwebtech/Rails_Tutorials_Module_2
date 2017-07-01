@@ -30,6 +30,8 @@ class FoosController < ApplicationController
   # PATCH/PUT /foos/1
   # PATCH/PUT /foos/1.json
   def update
+    @foo = Foo.find(params[:id])
+    
     if @foo.update(foo_params)
       head :no_content
     else

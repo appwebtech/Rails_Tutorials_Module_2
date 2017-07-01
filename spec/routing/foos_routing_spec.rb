@@ -1,3 +1,4 @@
+=begin
 require "rails_helper"
 
 RSpec.describe FoosController, type: :routing do
@@ -37,3 +38,4 @@ RSpec.describe FoosController, type: :routing do
 
   end
 end
+=end
