@@ -9,7 +9,8 @@ gem 'jbuilder', '~> 2.0', '>=2.6.0'
 
 group :development, :test do
 	gem 'webrick', '~>1.3', '>=1.3.1'
-	gem 'sqlite3', '~>1.3', '>=1.3.12'
+#	gem 'sqlite3', '~>1.3', '>=1.3.12'
+	gem 'pg', '0.20'
 	gem 'spring', '~>2.0', '>=2.0.0'
 	gem 'byebug', '~>9.0', '>=9.0.6'
 	gem 'rspec-rails', '~> 3.5', '>=3.5.2'
