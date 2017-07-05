@@ -433,38 +433,51 @@ Cool! isn't it?
 
 I will be deploying my skeleton SPA and see how it behaves and if everything works as I expect.
 
+After deployment, everything works as expected. 
 
-## External SPA Packaging with Gulp 
+See [link](https://josembi-jhu.herokuapp.com/). The previous UI in module 1 has been overwritten :-(. As you can see, the asset pipeline not only gave us the opportunity to deploy, but it also performed a lot of automated optimizations.
+
+
+# External SPA Packaging with Gulp 
+
+At this stage, the instructor stepped out of the Asset Pipeline and discussed Web Client Development outside of Rails Asset Pipeline (RAP). This kind of develoment is commonly called **external development**. 
+
+One of many Web Client Environments include;
+* Node Package Manager 
+* Bower 
+* Gulp tasks etc 
+
+What I'll do is code externally without using RAP with the goal of reaching the same state as I did with RAP or Ruby. My aim it to nail this approach and create an alternative so I don't get too watered down on a single approach.
 
 ## External Web Client Packaging with Gulp 
 
-### Web client development outside of Rails Asset Pipeline 
+As previously reiterated, I'll focus the Rails' backend on the API and the SPA application on delivering the browser experience. The two will comunicate via web services; however, I have options on how I can package that. 
 
-### One of many web client environments 
-    - Node Package manager
-    - Bower
-    - Gulp tasks 
+- Option 1; Using RAP. I can take the web client and package it within the Asset Pipeline, communicating through web services the API code running on the Rails server. This is easy as it provides us with a single source tree and a single deployment. 
 
-### Goal: Reach same state as I did with Asset Pipeline without the direct use of Rails or Ruby 
- The aim of taking this approach is to show that there are alternative ways besides Rails, and that one can branch out to them instead of getting watered down to Rails environment. 
+- Option 2; External Deployment. Ideal for complex web clients. I have the option of creating a separate application with different module dependencies and whatnot, then deploy in alternative environments like GitHub and leave Rails to deploy only the API code. 
 
- I'll develop a separate web app and deploy to browser, independent of the overall Rails back end. I'll focus on the Backend Rails API with the SPA application delivering the browser experience; the two will communicate together through web services.
+- Option 3; External Deployment in Public. This is an in-between alternative where all independent development is done on the web client and later use Rails' web server as a web server and deploy our distribution artifact to the public directory.
 
-## What are the Alternatives?
+![Options_Deployments_Distributions](https://user-images.githubusercontent.com/13242902/27881681-e79ec900-61c9-11e7-9718-351c5233d43c.png)
+<hr>
 
-### Rails Asset Pipeline
- The first approach that I can use is to take the web client and package it within the Asset Pipeline, that way it would communicate through web services and the API code running on the Rails server. This is kinda cool as it would provides me with a single SourceTree, a single deployment and things can get relatively simple. In my view, Asset Pipeline is not the best approach because I dont have access to Gem, Bundler etc; but this can be mitigated by [Gulp](http://gulpjs.com/) which is a Node Package Manager (NodeJS) which  does a lot of low-level packages like Bower, Gulp tasks and also manages higher-level packages like Angular, Bootstrap, etc. 
+As I diversify to become versatile, I'll do away with Option 1 for now. (No Gems [*dependencies, package capabilities*], No Bundler, No Asset Pipeline [*Concatenation, minimization, Profiles*], etc). I go Manual. I'll need to manage my library dependencies, versions, etc. 
+ 
+There are so many Web Client Development Tools floating arround; one of my favourites sometimes back was <a href="https://www.coursera.org/account/accomplishments/certificate/BCDAVFCZ7ABF">MeteorJS</a> which works favourably well in [Responsive Web Design](https://www.coursera.org/account/accomplishments/certificate/5SB7XUBKN3LN) with a NoSQL DB like [Mongo](https://www.coursera.org/account/accomplishments/certificate/5WN2K4AFU6B8). I'll be using Gulp, just to be in synch with what is in the course material. If I deviate, I will give a heads up. 
 
-### External Deployment
- However, given the complexities of web clients, they may need to break out of the Rails household and become their own separate application with different module dependencies and whatnot. Once the applications are broken, then there are the options of deploying to alternative environments like GitHub and leave Rails to deploying only the API Code. 
+**Gulp Tasks** is based on: 
+- Node Package Manager 
+    - part of NodeJS 
+    - Manages llow levelpackages like Bower, Gulp & Gulp Tasks 
+- Bower Package Manager 
+    - Manages higher-level packages like ngular, Bootstrap, etc. 
 
-### External Deployment in / public
-Lastly, there is the in-between alternative, where I can do all of the independent development that I want on the web client, but I still end up using the Rails' web server as a web server and deploy the distribution artifact into the public directory. Rails is not the much wiser that that application is there, and it continues to communicate through web services, albeit locally, and not actually over the Internet. 
-
-![screen shot 2017-02-20 at 22 10 40](https://cloud.githubusercontent.com/assets/20464709/23141944/8bd5fd3e-f7b9-11e6-9745-7cd1c94d0587.png)
+Anyway, sorry for the boredom with too much details. I'll grab a cup of coffee and get to coding momentariy ...
 
 ## Gulp Development Setup
- 
+
+
 
 
 
