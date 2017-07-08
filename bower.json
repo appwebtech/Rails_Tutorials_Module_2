@@ -1,0 +1,24 @@
+{
+  "name": "joe_demoapp",
+  "description": "<div align=\"center\"> <h1>Capstone Demo App<em> Module 2</em></h1>  <h2>Software Development Documentation</h2>   <h3>     <a href=\"#\">       Module 1     </a>     <span> | </span>",
+  "main": "index.js",
+  "authors": [
+    "Mwania Joseph"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery2": "^2.0.0",
+    "bootstrap-sass": "boostrap-sass#^3.3.7",
+    "angular": "^1.6.5",
+    "angular-ui-router": "^1.0.5",
+    "angular-resource": "^1.6.5"
+  }
+}
