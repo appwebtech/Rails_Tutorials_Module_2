@@ -1086,7 +1086,38 @@ It follows the ridirect to index.html via the routes with a successful request (
 
 In a nutshell, I successfully used Rails as a web server and used it to access my external web application as if it were part of rails. I also configured my routers and Controller (UI) for redirects and touched lightly on re-direct types.
 
- 
+## External Web Client Rails Deployment 
+
+I will be deploying the external web client within Rails to Heroku. At this point I'll just deploy my git local branch to my staging heroku remote branch which will overwrite my previous work. (I'll leave a screenshot)
+
+I ran on git merge issues whilst deploying but I sorted that out by forcing the deployment (not adviseable on a real project) on my remote staging branch because it serves the purpose of deployment and NOT sharing with DevOps which can really cause merge nightmares. 
+
+Unfortunately I can't use my professional paid account as it may expose sensitive data but the free one with limitations is more than enough to play around. 
+
+After deploying to Heroku and going to the root, I got my 304 as expected.
+
+![304](https://user-images.githubusercontent.com/13242902/27992938-d9cdc2b2-649f-11e7-88e9-c5aa8569cb8d.png)
+<hr>
+
+Now that I have all the infrastructure in place with multiple options, I will get to the SPA application.
+
+# SPA APPLICATION 
+
+##Merging UI Branches 
+
+I will be merging the Asset pipeline, External Web Client and External Web Client Deployed to Rails branches. This will provide a single branch capable of concurrently working with all three approaches. 
+
+Firstly, I'll merge the asset pipeline and the external rails branches to master. I didn't make lot's of commits in this project but I'm sure there will be some merge issues. Currently, this is how my commit tree looks like. 
+
+![screen shot 2017-07-09 at 13 53 37](https://user-images.githubusercontent.com/13242902/27993643-1b2ac99a-64ae-11e7-8da3-b6adce1dc569.png)
+<hr>
+
+
+
+
+
+
+
 
 
 
