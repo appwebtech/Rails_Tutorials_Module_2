@@ -8,7 +8,7 @@
     </a>
     <span> | </span>
        <a href="#">
-=======
+
 <h1>Capstone Demo App<em> Module 2</em></h1> 
 <h2>Software Development Documentation</h2>
   <h3>
@@ -17,7 +17,6 @@
     </a>
     <span> | </span>
        
->>>>>>> asset-pipeline
       Module 2
     </a>
     <span> | </span>
@@ -69,13 +68,10 @@
 - [MongoDB Backed Resource](#mongodb-backed-resource)
 - [Regression Testing](#regression-testing)
 - [Web Service Finishing Touches](#web-service-finishing-touches)
-<<<<<<< HEAD
 	- [RDBMS side](#rdbms-side)
 	- [Mongo side](#mongo-side)
-=======
     - [RDBMS side](#rdbms-side)
     - [Mongo side](#mongo-side)
->>>>>>> asset-pipeline
 - [CORS](#cors)
 - [API Deployment](#api-deployment)
 
@@ -164,17 +160,14 @@ I'll run a scaffold with the name of foos to implement the basic core functional
 
 <table>
   <thead>
-<<<<<<< HEAD
 	<tr>
 	  <th>Name</th>
 	  <th colspan="3"></th>
 	</tr>
-=======
     <tr>
       <th>Name</th>
       <th colspan="3"></th>
     </tr>
->>>>>>> asset-pipeline
   </thead>
 
   <tbody>
@@ -200,7 +193,6 @@ If I ran the server in production mode (**rails s -production**) then view the p
 <HTML>
   <HEAD><TITLE>Internal Server Error</TITLE></HEAD>
   <BODY>
-<<<<<<< HEAD
 	<H1>Internal Server Error</H1>
 	Missing `secret_token` and `secret_key_base` for 'production' environment, set these values in `config/secrets.yml`
 	<HR>
@@ -208,7 +200,6 @@ If I ran the server in production mode (**rails s -production**) then view the p
 	 WEBrick/1.3.1 (Ruby/2.3.1/2016-04-26) at
 	 localhost:3000
 	</ADDRESS>
-=======
     <H1>Internal Server Error</H1>
     Missing `secret_token` and `secret_key_base` for 'production' environment, set these values in `config/secrets.yml`
     <HR>
@@ -216,7 +207,6 @@ If I ran the server in production mode (**rails s -production**) then view the p
      WEBrick/1.3.1 (Ruby/2.3.1/2016-04-26) at
      localhost:3000
     </ADDRESS>
->>>>>>> asset-pipeline
   </BODY>
 </HTML>
 
@@ -1240,6 +1230,11 @@ Firstly, I'll merge the asset pipeline and the external rails branches to master
 <hr>
 
 
+I solved conflicting issues when merging the branches and my local host is working correctly. Running gulp will trigger browser synch to initialise my localhost at port 8080 and that will actually run in concert with Rails. 
+
+Successfully merged asset-pipeline branch to ap_external.
+![Merge](https://user-images.githubusercontent.com/13242902/27993829-700cc3de-64b1-11e7-8c67-040b45073a25.png)
+<hr>
 
 
 
@@ -1251,13 +1246,6 @@ Firstly, I'll merge the asset pipeline and the external rails branches to master
 
 
 
-
-
-
-
-
-=======
->>>>>>> asset-pipeline
 
 
 
