@@ -966,7 +966,138 @@ So I'm good here with two environment capability to Asset Pipeline. I have build
 
 ## External Web Client Deployment 
 
-In this section I will be deploying my external web client to the internet. I'll push my gulp branch to GitHub and display it on GitHub pages. However there exists a caveat. If I were to do this in real life I would need two source trees but I'll keep things in a common source tree for my code to stay intact. 
+In this section I will be deploying my external web client to the internet.
+I'll push my gulp branch to GitHub and display it on GitHub pages. However there exists a caveat. If I were to do this in real life I would need two source trees but I'll keep things in a common source tree for my code to stay intact.
+
+I'll create a GitHub gh-pages and deploy there. 
+
+You can see my deployment below;
+
+![Deployment](https://user-images.githubusercontent.com/13242902/27988624-59aaba6e-6426-11e7-83fc-e351c02cb67b.png)
+<hr>
+
+The url that is serving my page at github.io can easily fetch index.html from the client. 
+
+https://awt12.github.io/spa-demo-module2/public/client/index.html
+
+Cool! Now i have my page configured externally and it's working remotely in github pages. The Backend works marvelously but the Frontend needs work. Remember that Angular libraries are not well configured like I said previously when I added console source files with dependency injectin errors. 
+
+If I view the source file gulp from [github](https://awt12.github.io/spa-demo-module2/public/client/index.html) I see my deployment optimized service deployed. 
+
+```html
+<!DOCTYPE html>
+<html lang="en" ng-app="spa-demo">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="client-assets/styles.css">
+
+    <script src="client-assets/scripts.js"></script>
+  </head>
+  <body>
+
+    <div class="container">
+      <h1>Hello Joe</h1>
+  
+      <span>(from client/src/index.html)</span>
+      <div ui-view></div>
+    </div>
+
+    <button type="button" class="btn btn-default" aria-label="Left Align">
+      <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
+    </button>
+
+    <button type="button" class="btn btn-default btn-lg">
+      <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Star
+    </button>
+
+  </body>
+</html>
+```
+
+Likewise, if I view my [heroku](https://josembi-jhu.herokuapp.com/) deployment, I see the Asset Pipeline of the equivalent. 
+
+
+```html
+<!DOCTYPE html>
+<html lang="en" data-ng-app="spa-demo">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-compatible" content="ie=edge, chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" media="all" href="/assets/spa-demo-7e217a8098e1438e221004b35fcc2d8cfc4566a43f2647a11512bd88797a6d93.css" />
+        <script src="/assets/spa-demo-ffdef5152ec9d4f6f5f19e4abbab0ac1db34103a9220f4f79a7bb49ef00addd6.js"></script>
+    </head>
+    <body>
+			<div class="container">
+				<h1>Hello</h1>
+				<span>(from app/views/ui/index.html.erb)</span>
+				<div data-ui-view></div>
+			</div>
+    </body>
+</html>
+```
+
+See how the CSS and JS manifests differ? See also how the js and css files have been uglified? 
+* Github deployment; [CSS](https://awt12.github.io/spa-demo-module2/public/client/client-assets/styles.css), [JS](https://awt12.github.io/spa-demo-module2/public/client/client-assets/scripts.js) 
+* Heroku deployment; [CSS](https://josembi-jhu.herokuapp.com/assets/spa-demo-7e217a8098e1438e221004b35fcc2d8cfc4566a43f2647a11512bd88797a6d93.css), [JS](https://josembi-jhu.herokuapp.com/assets/spa-demo-ffdef5152ec9d4f6f5f19e4abbab0ac1db34103a9220f4f79a7bb49ef00addd6.js)
+
+## External Web Client Rails Packaging 
+
+Supposing I wanted to take the hybrid approach? That is take the external web client and deploy it along with my Rails server to Heroku? Which in my opinion is the best option from a feature and management standpoint. 
+
+So I will be deploying my external web client to public and make it accessible from root URL. What will happen now is that I'll clean my gulp environment and run a new distribution. 
+
+![gulpDist](https://user-images.githubusercontent.com/13242902/27992334-9aeb1714-6492-11e7-82e3-f54bd38d42e9.png)
+<hr>
+
+Notice how html custom error message redirects have been added on my public folder?
+
+![screen shot 2017-07-09 at 10 38 55](https://user-images.githubusercontent.com/13242902/27992351-02094128-6493-11e7-9280-2777e2af5d82.png)
+<hr>
+
+Next I'll boot puma and as it loads I'll brew a cup of espresso to jump start my mental faculties (YES! I've just woken up :-). 
+
+If I go to localhost:3000, I'll get my "under construction page" been served up by Rails. If I go to localhost3000/client, I'l access my distribution client that I deployed to Github. 
+
+![Localhost](https://user-images.githubusercontent.com/13242902/27992487-f9f68056-6495-11e7-92af-5c817b8c21c0.png)
+<hr>
+
+So I have my external web application been deployed and serviced by Rails as a web server. What I need to do now is solve the resource issue so that the client-assets like scripts.js are found by the URL. I've added a redirect rout in routers.rb to sort out that. 
+
+It's time to get greedy. At the root of the app, I have my "under construction page" but my Heroku deployment that contains my Asset Pipeline implementation is serving up the web app from the asset pipeline. I need something similar. 
+
+Next within my app UI controller, I'll add an index method with a redirect to client/index.html 
+
+If I go to my localhost client and inspect traffic, I see there is a temporary redirect. It can't quite find what is needed but it's aware of that (*304 Not Modified*). It's the client to display stuff from cache and proxy has no worries. 
+
+![screen shot 2017-07-09 at 11 25 42](https://user-images.githubusercontent.com/13242902/27992775-ed8c903e-649b-11e7-9a1c-8d5ec0d1910f.png)
+<hr>
+
+![304_modified](https://user-images.githubusercontent.com/13242902/27992774-ed89b3b4-649b-11e7-9888-002ce10919f7.png)
+<hr>
+
+It follows the ridirect to index.html via the routes with a successful request (200 OK).
+
+![200_ok](https://user-images.githubusercontent.com/13242902/27992769-d324e836-649b-11e7-9f28-4fe1e940147c.png) 
+<hr>
+
+In a nutshell, I successfully used Rails as a web server and used it to access my external web application as if it were part of rails. I also configured my routers and Controller (UI) for redirects and touched lightly on re-direct types.
+
+ 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
