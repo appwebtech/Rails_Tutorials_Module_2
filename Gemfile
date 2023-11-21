@@ -18,7 +18,7 @@ group :development do
 end
 
 group :development, :test do
-	gem 'webrick', '~>1.3', '>=1.3.1'
+	gem 'webrick', '~>1.6'
 #	gem 'sqlite3', '~>1.3', '>=1.3.12'
 #	gem 'pg', '0.20'
 	gem 'spring', '~>2.0', '>=2.0.0'
