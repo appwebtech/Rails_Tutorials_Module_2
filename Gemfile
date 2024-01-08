@@ -34,7 +34,7 @@ group :production do
 end
 
 gem 'pg', '0.20'
-gem 'puma', '~>4.3', :platforms=>:ruby
+gem 'puma', '~>5.6', :platforms=>:ruby
 gem 'mongoid', '~> 5.1', '>5.1.5'
 
 # Gems for implementing Angular SPA
